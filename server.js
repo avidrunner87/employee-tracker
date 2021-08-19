@@ -32,13 +32,13 @@ function mainMenu() {
                 break;
             
             case 'View All Roles':
-                console.log("View Roles");
-                mainMenu();
+                console.log('\n');
+                viewRoles();
                 break;
 
             case 'Add/Update Role':
-                console.log("Add/Update Role");
-                mainMenu();
+                console.log('\n');
+                modifyRoles();
                 break;
 
             case 'View All Departments':
@@ -66,7 +66,7 @@ function modifyDepartments() {
             type: 'list',
             name: 'modifyDepartments',
             message: 'What would you like to do?',
-            choices: ['Add Department', 'Edit Department', 'Delete Department', "Go Back"]
+            choices: ['Add Department', 'Edit Department', 'Delete Department', 'Go Back']
         }
     ])
     .then((res) => {
@@ -111,19 +111,117 @@ async function addDepartment() {
 
 async function editDepartment() {
     const department = new Department();
+    
     const viewDepartments = await department.viewAll();
-    const editDepartment = await department.updateExisting();
 
-    console.log(`\nSuccessfully updated ${editDepartment.departmentName} department!\n`)
+    if(viewDepartments !== 0) {
+        const editDepartment = await department.updateExisting();
+
+        console.log(`\nSuccessfully updated ${editDepartment.departmentName} department!\n`)
+    } else {
+        console.log('Please define at least one department\n')
+    }
 
     modifyDepartments();
 }
 
 async function deleteDepartment() {
     const department = new Department();
-    const viewDepartments = await department.viewAll();
-    const deleteDepartment = await department.deleteExisting();
-    console.log(`\nSuccessfully deleted the ${deleteDepartment[0].name} department!\n`)
+    
+    const viewDepartments = await department.viewReadyToDelete();
+    
+    if(viewDepartments !== 0) {
+        const deleteDepartment = await department.deleteExisting();
+
+    } else {
+        console.log('Please define at least one department\n')
+    }
 
     modifyDepartments();
+}
+
+function modifyRoles() {
+
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'modifyRoles',
+            message: 'What would you like to do?',
+            choices: ['Add Role', 'Edit Role', 'Delete Role', "Go Back"]
+        }
+    ])
+    .then((res) => {
+        switch (res.modifyRoles) {
+            case 'Add Role':
+                console.log('\n');
+                addRole();
+                break;
+            
+            case 'Edit Role':
+                console.log('\n');
+                editRole();
+                break;
+            
+            case 'Delete Role':
+                console.log('\n');
+                deleteRole();
+                break;
+
+            default:
+                console.log('\n');
+                mainMenu();
+        }
+    })
+}
+
+async function viewRoles() {
+    const role = new Role();
+    const viewRoles = await role.viewAll();
+
+    mainMenu();
+}
+
+async function addRole() {
+    const role = new Role();
+    const department = new Department();
+
+    const viewDepartments = await department.viewAll();
+    if(viewDepartments !== 0) {
+        const newRole = await role.insertNew();
+
+        console.log(`\nSuccessfully added ${newRole.name} role!\n`);
+    } else {
+        console.log('Please define at least one department before trying to create a new role\n')
+    }
+
+    modifyRoles();
+}
+
+async function editRole() {
+    const role = new Role();
+
+    const viewRoles = await role.viewAll();
+    if(viewRoles !== 0) {
+        const editRole = await role.updateExisting();
+
+        console.log(`\nSuccessfully updated the ${editRole.roleField} field!\n`)
+    } else {
+        console.log('Please define at least one role.\n')
+    }
+
+    modifyRoles();
+}
+
+async function deleteRole() {
+    const role = new Role();
+    
+    const viewRoles = await role.viewAll();
+    if(viewRoles !== 0) {
+        const deleteRole = await role.deleteExisting();
+
+    } else {
+        console.log('Please define at least one role.\n')
+    }
+    
+    modifyRoles();
 }
