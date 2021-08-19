@@ -55,7 +55,7 @@ I **WANT** to be able to view and manage the departments, roles, and employees i
 
 
 ## Licenses
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/avidrunner87/team-profile-generator/blob/main/LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/avidrunner87/employee-tracker/blob/main/LICENSE.md)
 
 ## Technology
 ![HTML](https://img.shields.io/static/v1?label=html&message=34.2%&color=red)
@@ -78,15 +78,28 @@ To fork this code to further improve the website, please follow these directions
 1. In Github fork the repository.
 1. Clone the repository to your local computer.
 
-_This assumes that you have setup your own SSH keys to connect with Github._
+      _This assumes that you have setup your own SSH keys to connect with Github._
 
-1. Before running the note-taker, please ensure all the necessary node modules are installed:
+3. Before running the employee tracker app, please ensure all the necessary node modules are installed:
 
-```
-npm install
-```
+      ```
+      npm install
+      ```
 
-You can run the express server locally running the following command:
+4. You will also need to setup your initial database for the application.
+
+   - Log into your local mysql instance
+
+   - Source the schema.sql file located in the db folder
+
+5. Copy and update contents of the .env.example file to reflect your local computer
+
+      ```
+      cp .env.example .env
+      ```
+
+You can run the application using the following command:
+      
 ```
 npm start
 ```
