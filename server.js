@@ -326,24 +326,21 @@ function additionalReports() {
             choices: ['Employees by Manager', 'Employees by Department', 'Budget by Department', "Go Back"]
         }
     ])
-    .then((res) => {
-        switch (res.modifyEmployees) {
+    .then(res => {
+        switch (res.report) {
             case 'Employees by Manager':
                 console.log('\n');
-                const employee = new Employee();
-                const viewEmployees = await employee.byManager();
+                viewEmployeeByMgr();
                 break;
             
             case 'Employees by Department':
                 console.log('\n');
-                const employee = new Employee();
-                const viewEmployees = await employee.byDepartment();
+                viewEmployeebyDept();
                 break;
             
             case 'Budget by Department':
                 console.log('\n');
-                const department = new Department();
-                const viewDepartments = await department.budget();
+                viewBudgetByDept();
                 break;
 
             default:
@@ -351,4 +348,22 @@ function additionalReports() {
                 mainMenu();
         }
     })
+}
+
+async function viewEmployeeByMgr() {
+    const employee = new Employee();
+    const viewEmployees = await employee.byManager();
+    additionalReports();
+}
+
+async function viewEmployeebyDept() {
+    const employee = new Employee();
+    const viewEmployees = await employee.byDepartment();
+    additionalReports();
+}
+
+async function viewBudgetByDept() {
+    const department = new Department();
+    const viewDepartments = await department.budget();
+    additionalReports();
 }
