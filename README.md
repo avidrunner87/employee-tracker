@@ -12,7 +12,6 @@
 1. [Support](#support)
    - [Installation](#installation)
    - [Questions](#questions)
-1. [References](#references)
 
 ## Description
 A command-line application to manage a company's employee database.
@@ -58,9 +57,8 @@ I **WANT** to be able to view and manage the departments, roles, and employees i
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/avidrunner87/employee-tracker/blob/main/LICENSE.md)
 
 ## Technology
-![HTML](https://img.shields.io/static/v1?label=html&message=34.2%&color=red)
-![CSS](https://img.shields.io/static/v1?label=css&message=3.1%&color=purple)
-![JavaScript](https://img.shields.io/static/v1?label=javascript&message=62.7%&color=yellow)
+![JavaScript](https://img.shields.io/static/v1?label=javascript&message=99.7%&color=yellow)
+![Shell](https://img.shields.io/static/v1?label=shell&message=0.3%&color=green)
 
 
 ## Mock-up
@@ -68,9 +66,10 @@ The following picture shows the website appearance and capabilities:
 
 <img src="./assets/images/screenshots/mockup.gif" width="600"><br>
 <img src="./assets/images/screenshots/screenshot01.png" width="300">
-<img src="./assets/images/screenshots/screenshot02.png" width="300"><br>
-<img src="./assets/images/screenshots/screenshot03.png" width="300">
 
+We also have a video that walks you through the entire application:
+
+[Access Video](https://github.com/avidrunner87/employee-tracker/blob/main/assets/images/screenshots/walkthrough.mp4)
 ## Support
 ### Installation
 To fork this code to further improve the website, please follow these directions:
@@ -106,5 +105,3 @@ npm start
 
 ### Questions
 If you have any questions please reach out to me via [Github](https://github.com/avidrunner87) or via [email](mailto:andrew.ronchetto@me.com).
-
-## References
